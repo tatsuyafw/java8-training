@@ -29,7 +29,7 @@ public class MyStreamTest {
         Integer[] expected = { 1, 2, 3, 4, 5 };
         
          Stream<Integer> zippedStream = MyStream.zip(first, second);
-         Object[] zippedArray = zippedStream.toArray();
+         Integer[] zippedArray = zippedStream.toArray(Integer[]::new);
         
         assertArrayEquals(expected, zippedArray);
     }
@@ -41,7 +41,7 @@ public class MyStreamTest {
         Integer[] expected = { 1, 2, 3, 4, 5, 6};
         
          Stream<Integer> zippedStream = MyStream.zip(first, second);
-         Object[] zippedArray = zippedStream.toArray();
+         Integer[] zippedArray = zippedStream.toArray(Integer[]::new);
         
         assertArrayEquals(expected, zippedArray);
     }
