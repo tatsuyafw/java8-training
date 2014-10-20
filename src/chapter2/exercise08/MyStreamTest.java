@@ -10,7 +10,6 @@ public class MyStreamTest {
         Stream<Integer> second = Stream.of(2, 4, 6);
         
         Object[] zippedArray = MyStream.zip(Stream.empty(), second).toArray();
-        System.out.println(zippedArray.length);
         assertEquals(0, zippedArray.length);
     }
     
@@ -28,9 +27,9 @@ public class MyStreamTest {
         Stream<Integer> second = Stream.of(2, 4);
         Integer[] expected = { 1, 2, 3, 4, 5 };
         
-         Stream<Integer> zippedStream = MyStream.zip(first, second);
-         Integer[] zippedArray = zippedStream.toArray(Integer[]::new);
-        
+        Stream<Integer> zippedStream = MyStream.zip(first, second);
+        Integer[] zippedArray = zippedStream.toArray(Integer[]::new);
+          
         assertArrayEquals(expected, zippedArray);
     }
 
@@ -40,9 +39,9 @@ public class MyStreamTest {
         Stream<Integer> second = Stream.of(2, 4, 6);
         Integer[] expected = { 1, 2, 3, 4, 5, 6};
         
-         Stream<Integer> zippedStream = MyStream.zip(first, second);
-         Integer[] zippedArray = zippedStream.toArray(Integer[]::new);
-        
+        Stream<Integer> zippedStream = MyStream.zip(first, second);
+        Integer[] zippedArray = zippedStream.toArray(Integer[]::new);
+         
         assertArrayEquals(expected, zippedArray);
     }
 
