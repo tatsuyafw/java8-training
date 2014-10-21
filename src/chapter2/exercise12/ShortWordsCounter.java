@@ -16,7 +16,7 @@ public class ShortWordsCounter {
         this.maxLength = maxLength;
         this.words = words;
     }
-    
+
     public int[] countUp() {
         Stream<String> wordStream = Arrays.stream(words);
         AtomicInteger[] shortWords = new AtomicInteger[this.maxLength + 1];
@@ -29,20 +29,20 @@ public class ShortWordsCounter {
                 shortWords[s.length()].incrementAndGet();
             }
         });
-        
+
         int[] result = new int[this.maxLength + 1];
         for (int i = 0; i < result.length; i++) {
             result[i] = shortWords[i].get();
         }
-        
+
         return result;
     }
-    
+
     public static void main(String[] args) {
         String[] words = { "JavaScript", "Java", "Ruby", "Perl", "Python", "Haskell", "Go", "C", "Ada", "C++" };
         int maxLenght = 8;
         ShortWordsCounter counter = new ShortWordsCounter(words, maxLenght);
-        
+
         System.out.println(Arrays.toString(counter.countUp()));
     }
 }
