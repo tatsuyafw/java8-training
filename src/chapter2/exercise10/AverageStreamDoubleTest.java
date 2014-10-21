@@ -16,9 +16,7 @@ public class AverageStreamDoubleTest {
     
     @Test
     public void testDoubleAverageWorkCorrectly() {
-        System.out.println(expectedAverage);
-        System.out.println(doubleAverage(doubleStream));
-        assertTrue(false);
+        assertEquals(expectedAverage, doubleAverage(doubleStream), 0.0001);
     }
     
     @Test(expected = IllegalStateException.class)
