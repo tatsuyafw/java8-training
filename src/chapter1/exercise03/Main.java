@@ -13,7 +13,7 @@ public class Main {
 
         File targetDir = new File(args[0]);
         String extname = args[1];
-        
+
         System.out.println(Arrays.asList(FileUtils.listWithExt(targetDir, extname)));
     }
 }

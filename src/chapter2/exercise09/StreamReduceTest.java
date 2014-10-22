@@ -12,7 +12,7 @@ public class StreamReduceTest {
     private ArrayList<Integer> secondIntegerList = new ArrayList<>(Arrays.asList(4, 5, 6));
     private ArrayList<Integer> expectedList;
     ArrayList<ArrayList<Integer>> arrayLists = new ArrayList<>(Arrays.asList(firstIntegerList, secondIntegerList));
-    
+
     @Before
     public void setup() {
         expectedList = new ArrayList<>(firstIntegerList);

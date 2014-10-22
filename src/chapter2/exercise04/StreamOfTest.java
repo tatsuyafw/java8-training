@@ -13,16 +13,16 @@ public class StreamOfTest {
     /*
      * FIXME Actually, this codes does not check whether the stream is composed of primitive integer.
      */
-    @Test    
+    @Test
     public void testCreatePrimitiveTypeIntegerStream() {
-        IntStream stream = IntStream.of(values);        
+        IntStream stream = IntStream.of(values);
         assertTrue(stream.toArray().getClass().getCanonicalName().equals("int[]"));
     }
-    
+
     @Test
     public void testCreateObjectTypeIntegerStream() {
         Stream<int[]> stream = Stream.of(values);
-        assertFalse(stream.toArray().getClass().getCanonicalName().equals("int[]"));       
+        assertFalse(stream.toArray().getClass().getCanonicalName().equals("int[]"));
     }
 
 }

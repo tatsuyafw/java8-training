@@ -2,7 +2,7 @@ package chapter1.exercise06;
 
 public interface RunnableEx {
     public void run() throws Exception;
-    
+
     public static Runnable uncheck(RunnableEx runner) {
         return new Runnable() {
             public void run() {

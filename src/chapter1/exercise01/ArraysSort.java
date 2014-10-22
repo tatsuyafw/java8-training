@@ -12,7 +12,7 @@ public class ArraysSort {
             System.out.println("[In Comparator] Thread ID: " + Thread.currentThread().getId());
             return Integer.compare(first.length(), second.length());
         };
-        
+
         System.out.println(Arrays.asList(languages));
         Arrays.sort(languages, comp);
         System.out.println(Arrays.asList(languages));

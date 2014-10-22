@@ -9,7 +9,7 @@ public class FileUtils {
         }
         if ( !targetDir.isDirectory() ) {
             throw new IllegalArgumentException(targetDir.getPath() + " is not a directory");
-        } 
+        }
 
         //return targetDir.listFiles(pathname -> pathname.isDirectory()); // Lambda expression
         return targetDir.listFiles(File::isDirectory);  // Method reference

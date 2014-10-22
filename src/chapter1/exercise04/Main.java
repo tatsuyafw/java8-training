@@ -9,12 +9,12 @@ public class Main {
             System.err.println("Input files and directories");
             System.exit(1);
         }
-        
+
         File[] files = new File[args.length];
         for (int i = 0; i < args.length; i++) {
             files[i] = new File(args[i]);
         }
-        
+
         System.out.println(Arrays.asList(FileUtils.sortWithDirPreceded(files)));
     }
 }
