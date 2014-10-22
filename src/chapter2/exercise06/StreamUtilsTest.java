@@ -1,10 +1,11 @@
 package chapter2.exercise06;
 
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+
 import java.util.stream.Stream;
 
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class StreamUtilsTest {
 
@@ -15,18 +16,15 @@ public class StreamUtilsTest {
 
         assertEquals(expectedCount, charStream.count());
     }
-    
+
     @Test
     public void testValidString() {
         Stream<Character> charStream = StreamUtils.characterStream("abcdefg");
         Character[] expectedChars = { 'a', 'b', 'c', 'd', 'e', 'f', 'g' };
-        
-        Character[] actualChars = charStream.toArray(Character[]::new);
-        
-        assertEquals(expectedChars.length, actualChars.length);
-        for (int i = 0; i < expectedChars.length; i++) {
-            assertEquals(expectedChars[i], actualChars[i]);
-        }
-    }
 
+        Character[] actualChars = charStream.toArray(Character[]::new);
+
+        assertEquals(expectedChars.length, actualChars.length);
+        assertArrayEquals(expectedChars, actualChars);
+    }
 }

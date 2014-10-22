@@ -20,10 +20,10 @@ public class ShortWordsCounterTest {
         String[] words = {};
         int maxLength = 10;
         ShortWordsCounter counter = new ShortWordsCounter(words, maxLength);
-        int[] result = counter.countUp();
-        IntStream resultStream = Arrays.stream(result);
+        int[] actualResult = counter.countUp();
+        IntStream resultStream = Arrays.stream(actualResult);
 
-        assertEquals(maxLength + 1, result.length);
+        assertEquals(maxLength + 1, actualResult.length);
         assertTrue(resultStream.allMatch(i -> (i == 0)));
     }
 
@@ -32,12 +32,10 @@ public class ShortWordsCounterTest {
         String[] words = { "C", "C++", "Java", "C#", "JavaScript", "Go", "Ruby", "Haskell", "Perl", "Python", "OCaml" };
         int maxLength = 5;
         ShortWordsCounter counter = new ShortWordsCounter(words, maxLength);
-        int[] result = counter.countUp();
+        int[] actualResult = counter.countUp();
         int[] expectedResult = { 0, 1, 2, 1, 3, 1 };
 
-        assertEquals(expectedResult.length, result.length);
-        for (int i = 0; i < expectedResult.length; i++) {
-            assertEquals(expectedResult[i], result[i]);
-        }
+        assertEquals(expectedResult.length, actualResult.length);
+        assertArrayEquals(expectedResult, actualResult);
     }
 }
