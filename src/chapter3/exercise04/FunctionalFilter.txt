@@ -1,0 +1,18 @@
+DirectoryStream.Filter
+  Predicate<T> Tはディレクトリ・エントリ
+EventFilter
+  Predicate<XMLEvent>
+FileFilter
+  Predicate<File>
+FilenameFilter
+  メソッドの引数が2つ
+Filter
+  Predicate<LogRecord>
+LSSerializerFilter
+  メソッドの引数はなし
+NotificationFilter
+  Predicate<Notification>
+ServiceRegistry.Filter
+  Predicate<Object> (意味が無い?)
+StreamFilter
+  Predicate<XMLStreamReader>
