@@ -11,4 +11,13 @@ public class LockUtil {
 			lock.unlock();
 		}
 	}
+
+	public static void main(String[] args) {
+	    ReentrantLock lock = new ReentrantLock();
+	    withLock(lock, () -> {
+	        System.out.println("lock status: " + lock.isLocked());
+	    });
+
+	    System.out.println("lock status: " + lock.isLocked());
+	}
 }

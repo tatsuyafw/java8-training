@@ -1,0 +1,5 @@
+Q.23 CompletableFuture に対する flatMap 操作は存在しますか。存在するなら、それは何ですか。
+
+A. 存在する。それは別名の thenComposeとして提供されている。
+thenComposeのパラメータは T-> CompletableFuture<U> (本当は CompletionStage<U>) である。
+詳細は p154 の「6.4.4 非同期操作を合成する」を参照。

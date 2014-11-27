@@ -1,4 +1,4 @@
-package chapter3.exercise05;
+package chapter3.exercise08;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
