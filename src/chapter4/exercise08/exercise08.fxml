@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane hgap="10" vgap="10">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10" />
+    </padding>
+    <children>
+        <Label text="Input"
+            GridPane.columnIndex="0"
+            GridPane.rowIndex="0" 
+            GridPane.halignment="RIGHT"/>
+        <Label text="Output"
+            GridPane.columnIndex="0"
+            GridPane.rowIndex="1" 
+            GridPane.halignment="RIGHT"/>            
+        <TextField fx:id="inputField" GridPane.columnIndex="1"
+                   GridPane.rowIndex="0" xmlns:fx="http://javafx.com/fxml"/>
+        <Text text="${inputField.text}" GridPane.columnIndex="1"
+              GridPane.rowIndex="1" />
+    </children>
+</GridPane>
