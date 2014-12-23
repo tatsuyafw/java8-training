@@ -10,22 +10,22 @@ import java.util.stream.Stream;
 
 public class AllOffsetsOfAvailableZones {
     public static void main(String[] args) {
-        for (Map.Entry<String, ZoneOffset> e : getAllOffsetsOfAvailableZones().entrySet()) {
+        for (Map.Entry<ZoneId, ZoneOffset> e : getAllOffsetsOfAvailableZones().entrySet()) {
             System.out.println("Zone: " + e.getKey() + "\tOffset: " + e.getValue());
         }
     }
 
-    public static Map<String, ZoneOffset> getAllOffsetsOfAvailableZones() {
+    public static Map<ZoneId, ZoneOffset> getAllOffsetsOfAvailableZones() {
         Instant now = Instant.now();
-        Stream<String> zoneStream = zoneStream();
+        Stream<ZoneId> zoneStream = zoneIdStream();
         return zoneStream.collect(Collectors.toMap(
                 Function.identity(),
-                zone -> {
-                    return now.atZone(ZoneId.of(zone)).getOffset();
+                zoneId -> {
+                    return now.atZone(zoneId).getOffset();
                 }));
     }
 
-    public static Stream<String> zoneStream() {
-        return ZoneId.getAvailableZoneIds().stream();
+    public static Stream<ZoneId> zoneIdStream() {
+        return ZoneId.getAvailableZoneIds().stream().map(id -> ZoneId.of(id));
     }
 }
