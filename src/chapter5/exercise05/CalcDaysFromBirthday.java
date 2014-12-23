@@ -18,11 +18,10 @@ public class CalcDaysFromBirthday {
     private static long calcDaysFromToday(int year, int month, int day) {
         LocalDate birthday = LocalDate.of(year, month, day);
         LocalDate today = LocalDate.now();
-        long days = birthday.until(today, ChronoUnit.DAYS) + 1;
-        if (days <= 0) {
-            throw new IllegalArgumentException("The given day must be before today");
+        if (birthday.isAfter(today)) {
+            throw new IllegalArgumentException("The given day must be before today: " + birthday);
         }
-        return days;
+        return birthday.until(today, ChronoUnit.DAYS) + 1;
     }
 
     private static void usage() {
