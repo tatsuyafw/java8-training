@@ -1,14 +1,28 @@
 package chapter3.exercise07;
 
+import java.util.Arrays;
 import java.util.Comparator;
 
-// できてないない
-// 組み合わせての指定ができない
+// Not works...
 public class MyComparator {
-	public static Comparator<String> comparatorGenerator(Key key) {
-	    switch( key ) {
+	public static Comparator<String> comparatorGenerator(Key[] keys) {
+	    if (keys.length == 0) {
+	        throw new IllegalArgumentException("keys must have at least one key");
+	    }
+	    switch (keys[0]) {
 	    case ASC:
-	        return (first, second) -> first.compareTo(second);
+	        return (first, second) -> {
+	            int comp = first.compareTo(second);
+	            if (comp != 0)  {
+	                return comp;
+	            } else {
+	                if (keys.length == 1) return comp;
+	                else {
+	                    Key[] restKeys = Arrays.copyOfRange(keys, 1, keys.length - 1);
+	                    return comparatorGenerator(restKeys).compare(first, second);
+	                }
+	            }
+	        };
 	    case DESC:
 	        return (first, second) -> -1 * first.compareTo(second);
 	    case CASE_SENSITIVE:
