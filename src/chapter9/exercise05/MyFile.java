@@ -26,7 +26,7 @@ public class MyFile {
             ex.printStackTrace();
             System.exit(1);
         }
-        System.out.println("Writed to " + out);
+        System.out.println("Written to " + out);
     }
 
     private static void reveseByteArray(byte[] bytes) {
