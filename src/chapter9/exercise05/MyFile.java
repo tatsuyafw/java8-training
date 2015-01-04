@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 
 public class MyFile {
     public static void main(String[] args) {
-        Path in = Paths.get( MyFile.class.getResource("alice.txt").getPath() );
+        Path in = Paths.get(MyFile.class.getResource("alice.txt").getPath());
 
         byte[] bytes = null;
         try {
@@ -18,11 +18,11 @@ public class MyFile {
         }
         reveseByteArray(bytes);
 
-        Path thisClassPath = Paths.get( MyFile.class.getResource("MyFile.class").getPath() );
+        Path thisClassPath = Paths.get(MyFile.class.getResource("MyFile.class").getPath());
         Path out = thisClassPath.resolveSibling("ecila.txt");
         try {
             Files.write(out, bytes);
-        } catch(IOException ex) {
+        } catch (IOException ex) {
             ex.printStackTrace();
             System.exit(1);
         }
