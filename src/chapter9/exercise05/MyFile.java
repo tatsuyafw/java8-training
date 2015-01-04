@@ -4,9 +4,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 public class MyFile {
     public static void main(String[] args) {
@@ -21,8 +18,8 @@ public class MyFile {
         }
         reveseByteArray(bytes);
 
-        Path thisClassPath = Paths.get( MyFile.class.getResource(MyFile.class.getSimpleName() + ".class").getPath() );
-        Path out = thisClassPath.resolveSibling( "ecila.txt" );
+        Path thisClassPath = Paths.get( MyFile.class.getResource("MyFile.class").getPath() );
+        Path out = thisClassPath.resolveSibling("ecila.txt");
         try {
             Files.write(out, bytes);
         } catch(IOException ex) {
