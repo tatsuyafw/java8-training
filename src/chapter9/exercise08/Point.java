@@ -1,5 +1,7 @@
 package chapter9.exercise08;
 
+import java.util.Objects;
+
 public class Point implements Comparable<Point> {
     private int x;
     private int y;
@@ -12,9 +14,7 @@ public class Point implements Comparable<Point> {
     @Override
     public int compareTo(Point other) {
         if (this == other) return 0;
-        if (other == null) {
-            throw new NullPointerException("other must not be null");
-        }
+        Objects.requireNonNull(other, "other must not be null");
 
         if (x > other.x) {
             return 1;
