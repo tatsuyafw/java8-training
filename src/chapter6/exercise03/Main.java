@@ -3,8 +3,6 @@ package chapter6.exercise03;
 import static utils.BenchMark.benchmark;
 
 import java.time.Duration;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class Main {
     private static final int THREAD_NUM = 1000;
@@ -12,7 +10,6 @@ public class Main {
 
     public static void main(String[] args) {
         Thread[] threads = new Thread[THREAD_NUM];
-        ExecutorService executorService = Executors.newFixedThreadPool(THREAD_NUM);
 
         Counter counterWithAtomicLong = new CounterWithAtomicLong();
         Duration timeElapsedWithAtomicLong = benchmark(() -> {
