@@ -14,6 +14,8 @@ public class Main {
      * IDを生成するだけのジョブを複数スレッドで実行した場合どちらが速いか
      * 結果:
      *   スレッドが多い(1000)と LongAdder のほうが速く、逆にスレッドが少ない(10)と AtomicLong のほうが早かった
+     * 追記:
+     *   練習3と同じようなことを気が付かずにやったしまった...
      */
     public static void main(String[] args) {
         ExecutorService executorService = Executors.newFixedThreadPool(THREAD_NUM);
