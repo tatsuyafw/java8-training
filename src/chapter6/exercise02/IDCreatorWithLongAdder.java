@@ -12,6 +12,6 @@ public class IDCreatorWithLongAdder implements IDCreator {
     @Override
     public long getId() {
         this.counter.increment();
-        return this.counter.sum();
+        return this.counter.longValue();
     }
 }
