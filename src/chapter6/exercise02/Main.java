@@ -1,7 +1,8 @@
 package chapter6.exercise02;
 
+import static utils.BenchMark.benchmark;
+
 import java.time.Duration;
-import java.time.Instant;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -18,32 +19,27 @@ public class Main {
      *   練習3と同じようなことを気が付かずにやったしまった...
      */
     public static void main(String[] args) {
-        ExecutorService executorService = Executors.newFixedThreadPool(THREAD_NUM);
+        ExecutorService executorForLongAdder = Executors.newFixedThreadPool(THREAD_NUM);
         IDCreator idCreatorWithLongAdder = new IDCreatorWithLongAdder();
         Duration timeElapsedWithLongAdder = benchmark(() -> {
             for (int i = 0; i < JOB_NUM; i++) {
                 Job job = new Job(idCreatorWithLongAdder);
-                executorService.execute(job);
+                executorForLongAdder.execute(job);
             }
+            executorForLongAdder.shutdown();
         });
         System.out.println("Time elapsed with LongAdder: " + timeElapsedWithLongAdder.toMillis());
 
+        ExecutorService executorForAtomicLong = Executors.newFixedThreadPool(THREAD_NUM);
         IDCreator idCreatorWithAtomicLong = new IDCreatorWithAtomicLong();
         Duration timeElapsedWithAtomicLong = benchmark(() -> {
             for (int i = 0; i < JOB_NUM; i++) {
                 Job job = new Job(idCreatorWithAtomicLong);
-                executorService.execute(job);
+                executorForAtomicLong.execute(job);
             }
+            executorForAtomicLong.shutdown();
         });
         System.out.println("Time elapsed with AtomicLong: " + timeElapsedWithAtomicLong.toMillis());
-    }
-
-    public static Duration benchmark(Runnable measuredJob) {
-        Instant start = Instant.now();
-        measuredJob.run();
-        Instant end = Instant.now();
-        Duration timeElapsed = Duration.between(start, end);
-        return timeElapsed;
     }
 
     /*
