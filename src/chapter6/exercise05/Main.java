@@ -33,8 +33,10 @@ public class Main {
             }
         }
 
-        System.out.println(map.get("Alice"));
-        System.out.println(map.get("a"));
-        System.out.println(map.get("System"));
+        System.out.println("Word count: " + map.size());
+        String[] words = { "Alice", "a", "System" };
+        for (int i = 0; i < words.length; i++) {
+            System.out.println(words[i] + " is included in " + map.get(words[i]));
+        }
     }
 }
