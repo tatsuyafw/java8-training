@@ -26,7 +26,7 @@ public class Main {
     }
 
     /*
-     * [0, limit) の範囲で乱数を生成
+     * [0, limit) の範囲の乱数列を生成
      */
     public static long[] createLongRandomValues(int limit, int size) {
         long[] values = new long[size];
