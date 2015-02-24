@@ -90,4 +90,13 @@ public class Matrix {
         }
         return sum;
     }
+
+    public void show() {
+        for (int i = 0; i < values.length; i++) {
+            for (int j = 0; j < values[i].length; j++) {
+                System.out.print(values[i][j] + " " );
+            }
+            System.out.println();
+        }
+    }
 }
