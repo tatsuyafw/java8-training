@@ -1,8 +1,9 @@
 var pipe = function() {
-    for each (var command in arguments) {
-    print(command);
+  var output;
+  for each (var command in arguments) {
+    output = $EXEC(command, output);
   }
+  print(output);
 };
 
-pipe(1, 2, 3);
-var output = `dir`;
+pipe('find .', 'grep -v class', 'sort');
