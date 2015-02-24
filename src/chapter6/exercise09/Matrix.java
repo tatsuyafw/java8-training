@@ -2,6 +2,9 @@ package chapter6.exercise09;
 
 import java.util.Objects;
 
+/*
+ * TODO: Write test codes.
+ */
 public class Matrix {
     private int[][] values;
 
@@ -32,11 +35,12 @@ public class Matrix {
         int[][] otherValues = transposedMatrix.getValues();
 
         for (int i = 0; i < values.length; i++) {
-
+            for (int j = 0; j < values[i].length; j++) {
+                newValues[i][j] = productArrayAndSum(values[i], otherValues[j]);
+            }
         }
 
-
-        return null;
+        return new Matrix(newValues);
     }
 
     public int[][] getValues() {
@@ -51,7 +55,9 @@ public class Matrix {
         return values[0].length;
     }
 
-    // 転置行列を返す
+    /*
+     *  転置行列を返す
+     */
     private Matrix transpose() {
         int[][] newValues = new int[values[0].length][];
 
@@ -60,16 +66,28 @@ public class Matrix {
             newValues[i] = new int[values.length];
         }
 
-        // コピー
+        // 転置
         for (int i = 0; i < values.length; i++) {
             for (int j = 0; j < values[i].length; j++) {
-                newValues[j][i] = values[i][i];
+                newValues[j][i] = values[i][j];
             }
         }
         return new Matrix(newValues);
     }
 
+    /*
+     * ２つの配列の積を取る
+     * int の範囲を超えたものについては考慮しない
+     */
     private static int productArrayAndSum(int[] array, int[] other) {
-        return 0;
+        if (array.length != other.length) {
+            throw new IllegalArgumentException("array.length must equal other.length");
+        }
+
+        int sum = 0;
+        for (int i = 0; i < array.length; i++) {
+            sum += array[i] * other[i];
+        }
+        return sum;
     }
 }
