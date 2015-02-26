@@ -14,25 +14,18 @@ import java.util.function.Supplier;
  * DO NOT USE for production.
  */
 public class Main {
-    private final static String SAMPLE_PASSWORD = "Secret";
+    private final static String SAMPLE_PASSWORD = "secret";
 
     public static void main(String[] args) {
-        CompletableFuture<PasswordAuthentication> pass = repeat(readUserPass(), checkPassword());
+        CompletableFuture<PasswordAuthentication> passwordAuthenticationFuture = repeat(readUserPass(), checkPassword());
 
         try {
-            pass.get();
+            PasswordAuthentication pass = passwordAuthenticationFuture.get();
+            System.out.println("Hi, " + pass.getUserName() + "!");
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
             System.exit(1);
         }
-
-        /*
-        try {
-            ForkJoinPool.commonPool().awaitTermination(10,  TimeUnit.SECONDS);
-        } catch (InterruptedException ex) {
-            ex.printStackTrace();
-        }
-        */
     }
 
     private static Supplier<PasswordAuthentication> readUserPass() {
@@ -74,11 +67,19 @@ public class Main {
 
     private static Predicate<PasswordAuthentication> checkPassword() {
         return (passwordAuthentication) -> {
+            // Simulate an authentication delay
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+                System.exit(1);
+            }
+
             String password = String.valueOf(passwordAuthentication.getPassword());
             if ( password.equals(SAMPLE_PASSWORD) ) {
-                System.out.println( "DEBUG: " + password.equals(SAMPLE_PASSWORD) );
                 return true;
             } else {
+                System.out.println("Sorry, try again");
                 return false;
             }
         };
@@ -87,7 +88,6 @@ public class Main {
     public static <T> CompletableFuture<T> repeat(Supplier<T> action, Predicate<T> until) {
         return CompletableFuture.supplyAsync(action).thenCompose(result -> {
             if (until.test(result)) {
-                System.out.println("until.test(result): is true");
                 return CompletableFuture.<T>supplyAsync(() -> result);
             } else {
                 return repeat(action, until);
