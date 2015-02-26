@@ -7,13 +7,15 @@ import java.time.YearMonth;
 public class Cal {
     public static void main(String[] args) {
         Options options = parseOptions(args);
-        PritableMonth month = new PritableMonth(YearMonth.of(2014, 11));
+        PritableMonth month = new PritableMonth(YearMonth.of(options.year.getValue(), options.month));
         month.printMonth();
     }
 
     public static Options parseOptions(String[] args) {
         validationArguments(args);
-        return null;
+        Month month = Month.of(Integer.parseInt(args[0]));
+        Year year   = Year.of(Integer.parseInt(args[1]));
+        return new Options(year, month);
     }
 
     public static void validationArguments(String[] args) {
@@ -58,10 +60,6 @@ public class Cal {
         private Options(Year year, Month month) {
             this.year = year;
             this.month = month;
-        }
-
-        static Options of(int year, int month) {
-            return null;
         }
     }
 }

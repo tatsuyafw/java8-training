@@ -1,9 +1,11 @@
 package chapter5.exercise04;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.TextStyle;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -23,13 +25,45 @@ public class PritableMonth {
         }
     }
 
+    // TODO: Refactoring...
     private List<String> weekLines() {
         List<String> lines = new ArrayList<>();
         LocalDate date = this.yearMonth.atDay(1);
+        LocalDate startOfNextMonth = yearMonth.plusMonths(1).atDay(1);
         StringBuilder lineBuilder = new StringBuilder();
-        // [WIP]
-        while ( date != this.yearMonth.atEndOfMonth() ) {
+
+        while ( ! date.equals(startOfNextMonth) ) {
+            DayOfWeek currentDayOfWeek = date.getDayOfWeek();
+            // 月始まりの場合は行の始まりの部分に曜日の数の空白埋める
+            if ( date.getDayOfMonth() == 1 ) {
+                int count = currentDayOfWeek.getValue() - DayOfWeek.MONDAY.getValue();
+                String[] spaces = new String[count];
+                Arrays.fill(spaces, "  "); // 一日は空白２つぶん
+                lineBuilder.append(String.join(" ", spaces));
+            }
+
+            // 週始まりである月曜日以外は空白を挿入
+            if ( ! date.getDayOfWeek().equals( DayOfWeek.MONDAY )) {
+                lineBuilder.append(" ");
+            }
+            // 10 未満の一桁の日付の場合空白を挿入
+            if ( date.getDayOfMonth() < 10 ) {
+                lineBuilder.append(" ");
+            }
+
+            lineBuilder.append(date.getDayOfMonth());
+
+            // 日曜の場合は改行
+            if (date.getDayOfWeek().equals(DayOfWeek.SUNDAY)) {
+                lines.add(lineBuilder.toString());
+                lineBuilder = new StringBuilder();
+            }
+
             date = date.plusDays(1);
+        }
+        // 最後の行が残っている場合は追加
+        if (lineBuilder.length() != 0) {
+            lines.add(lineBuilder.toString());
         }
 
         return lines;
