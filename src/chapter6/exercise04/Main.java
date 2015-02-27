@@ -17,7 +17,7 @@ public class Main {
         }
         System.out.println("Maximum value: " + maximumValueCalculator.get());
 
-        // 乱数列の中から最大値を取得
+        // 乱数列の中から最小値を取得
         LongAccumulator minimumValueCalculator = new LongAccumulator(Math::min, RANDOM_VALUES_LIMIT);
         for (int i = 0; i < randomValues.length; i++) {
             minimumValueCalculator.accumulate( randomValues[i] );
