@@ -22,14 +22,14 @@ public class ShortWordsCounter {
 
     public int[] countUp() {
         Stream<String> wordStream = Arrays.stream(words);
-        
+
         Map<Integer, Long> shortWords = wordStream.collect(
                 groupingBy(s -> {
                     if (s.length() <= this.maxLength) {
                         return s.length();
                     } else {
-                        //  If a word's length is shorter than maxLength, returns -1 not to count up this word. 
-                        return -1; 
+                        //  If a word's length is shorter than maxLength, returns -1 not to count up this word.
+                        return -1;
                     }
                 }, counting())
                 );

@@ -29,7 +29,7 @@ public class MyGridrPane extends Application {
 		stage.setTitle(this.getClass().getSimpleName());
 		stage.show();
 	}
-	
+
 	public static void main(String[] args) {
 		launch(args);
 	}

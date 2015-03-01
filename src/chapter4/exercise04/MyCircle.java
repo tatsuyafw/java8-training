@@ -27,11 +27,11 @@ public class MyCircle extends Application {
 	    );
 		circle.centerXProperty().bind(scene.widthProperty().divide(2));
 		circle.centerYProperty().bind(scene.heightProperty().divide(2));
-		
+
 		stage.setTitle(this.getClass().getSimpleName());
 		stage.show();
 	}
-	
+
 	public static void main(String[] args) {
 		launch(args);
 	}
