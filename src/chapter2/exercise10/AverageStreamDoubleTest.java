@@ -13,12 +13,12 @@ public class AverageStreamDoubleTest {
     public void testEmptyDoubleStream() {
         assertTrue(AverageStreamDouble.doubleAverage(Stream.empty()).equals(0.0));
     }
-    
+
     @Test
     public void testDoubleAverageWorkCorrectly() {
         assertEquals(expectedAverage, doubleAverage(doubleStream), 0.0001);
     }
-    
+
     @Test(expected = IllegalStateException.class)
     public void testDoubleAverageIllegalState() {
         doubleAverageIllegalState(doubleStream);

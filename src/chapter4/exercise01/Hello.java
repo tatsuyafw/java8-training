@@ -21,13 +21,13 @@ public class Hello extends Application {
 		Label textLabel = new Label("Text: ");
 		Label message = new Label(MESSAGE_STRING);
 		TextField text = new TextField(MESSAGE_STRING);
-		
+
 		messageLabel.setFont(new Font(LABEL_FONT_SIZE));
 		textLabel.setFont(new Font(LABEL_FONT_SIZE));
 		message.setFont(new Font(VIEW_FONT_SIZE));
 		text.setFont(new Font(VIEW_FONT_SIZE));
 		text.setPadding(new Insets(0));
-		
+
 		message.textProperty().bind(text.textProperty());
 
 		GridPane pane = new GridPane();
@@ -39,11 +39,11 @@ public class Hello extends Application {
 		GridPane.setHalignment(textLabel, HPos.RIGHT);
 
 		pane.setPadding(new Insets(5));
-		stage.setScene(new Scene(pane));		
+		stage.setScene(new Scene(pane));
 		stage.setTitle(TITLE);
 		stage.show();
 	}
-	
+
 	public static void main(String[] args) {
 		launch(args);
 	}

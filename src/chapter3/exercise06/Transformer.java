@@ -16,7 +16,7 @@ public class Transformer {
 				out.getPixelWriter().setColor(x, y,
 						f.apply(in.getPixelReader().getColor(x, y), arg));
 			}
-		}		
+		}
 		return out;
 	}
 }
