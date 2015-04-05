@@ -13,7 +13,7 @@ public class ScannerConverter {
         return null; // Temporary
     }
 
-    public static Stream<String> plines(Scanner scanner) {
+    public static Stream<String> lines(Scanner scanner) {
         Iterator<String> iter = new Iterator<String>() {
 
             @Override
