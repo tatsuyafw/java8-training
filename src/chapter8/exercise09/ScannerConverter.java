@@ -9,11 +9,6 @@ import java.util.stream.StreamSupport;
 
 public class ScannerConverter {
     public static Stream<String> words(Scanner scanner) {
-
-        return null; // Temporary
-    }
-
-    public static Stream<String> lines(Scanner scanner) {
         Iterator<String> iter = new Iterator<String>() {
             @Override
             public boolean hasNext() {
@@ -23,6 +18,22 @@ public class ScannerConverter {
             @Override
             public String next() {
                 return scanner.next();
+            }
+        };
+        return StreamSupport.stream(Spliterators.spliteratorUnknownSize(
+                iter, Spliterator.ORDERED | Spliterator.NONNULL), false);
+    }
+
+    public static Stream<String> lines(Scanner scanner) {
+        Iterator<String> iter = new Iterator<String>() {
+            @Override
+            public boolean hasNext() {
+                return scanner.hasNextLine();
+            }
+
+            @Override
+            public String next() {
+                return scanner.nextLine();
             }
         };
         return StreamSupport.stream(Spliterators.spliteratorUnknownSize(
