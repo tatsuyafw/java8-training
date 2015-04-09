@@ -1,4 +1,4 @@
-package chapter8.exercise09;
+package chapter8.exercise10;
 
 import java.io.IOException;
 import java.nio.file.Files;
