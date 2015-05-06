@@ -5,7 +5,6 @@ import java.io.PrintWriter;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
-// [WIP]
 public class TryWithResources {
     public static void main(String[] args) {
         Scanner in = null;
