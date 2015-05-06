@@ -20,10 +20,18 @@ public class TryWithResources {
             ex.printStackTrace();
         } finally {
             if (in != null) {
-                in.close();
+                try {
+                    in.close();
+                } catch (IllegalStateException ex) {
+                    ex.printStackTrace();
+                }
             }
             if (out != null) {
-                out.close();
+                try {
+                    out.close();
+                } catch (IllegalStateException ex) {
+                    ex.printStackTrace();
+                }
             }
         }
     }
